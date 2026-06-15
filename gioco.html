@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sfida Robottino</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background-color: #2c3e50;">
+
+    <div id="game-container">
+        
+        <div id="mission-header" style="width: 100%; text-align: center; margin-bottom: 15px;">
+            <h2 id="display-mission-title" style="margin: 0; color: #2c3e50; font-size: 1.8rem;">Caricamento livello...</h2>
+            <p id="display-mission-text" style="font-size: 1.2rem; background: #e8f8f5; padding: 12px 24px; border-radius: 8px; border: 2px solid #1abc9c; display: inline-block; max-width: 80%; margin: 10px 0; font-weight: bold;"></p>
+            <div id="display-timer" style="font-size: 1.2rem; font-weight: bold; color: #e74c3c;"></div>
+        </div>
+        
+        <div id="game-layout" style="display: flex; gap: 30px; width: 100%; align-items: flex-start;">
+            
+            <div id="game-board-area" style="flex: 1.5; display: flex; justify-content: center; position: relative;">
+                <div id="game-board-container">
+                    <div id="game-grid" class="game-grid"></div>
+                </div>
+                
+                <div id="victory-modal" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 100; flex-direction: column; justify-content: center; align-items: center; border-radius: 8px; border: 4px solid #27ae60;">
+                    <h2 style="font-size: 2.5rem; color: #27ae60; margin: 0 0 10px 0;">🎉 Bravissimo!</h2>
+                    <p style="font-size: 1.2rem; color: #2c3e50; font-weight: bold; margin-bottom: 30px; text-align: center; padding: 0 20px;">Hai completato la missione con il codice perfetto.</p>
+                    <button id="btn-next-level" class="btn-primary" style="font-size: 1.5rem; padding: 15px 30px; box-shadow: 0 6px 12px rgba(39, 174, 96, 0.4);">Prossimo Livello ➡️</button>
+                </div>
+            </div>
+            
+            <div id="game-ui-area" style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+                
+                <div style="background: #fdf2e9; padding: 15px; border-radius: 8px; border: 2px solid #e67e22; flex-shrink: 0;">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #d35400;">Inventario</h3>
+                    <div id="student-inventory" style="display: flex; justify-content: center; align-items: center; height: 60px; background: #fff; border: 2px dashed #f39c12; border-radius: 8px; font-size: 2.5rem;"></div>
+                </div>
+                
+                <div style="background: #ecf0f1; padding: 15px; border-radius: 8px;">
+                    <h3 style="margin-top: 0; font-size: 1.1rem;">Comandi</h3>
+                    <div id="student-palette" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <button class="student-cmd-btn" data-cmd="avanti">Avanti</button>
+                        <button class="student-cmd-btn" data-cmd="indietro">Indietro</button>
+                        <button class="student-cmd-btn" data-cmd="sinistra">Ruota a Sinistra</button>
+                        <button class="student-cmd-btn" data-cmd="raccogli">Raccogli</button>
+                        <button class="student-cmd-btn" data-cmd="lascia">Lascia</button>
+                        <button class="student-cmd-btn btn-loop" data-cmd="ripeti">Ripeti</button>
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; flex: 1;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                        <h3 style="margin: 0; font-size: 1.1rem;">Il Tuo Codice</h3>
+                        <button id="btn-clear-student-code" style="padding: 5px 10px; font-size: 0.9rem; background: #fadbd8; color: #c0392b; border: 1px solid #e74c3c; border-radius: 4px; cursor: pointer; font-weight: bold;">🗑️ Svuota Tutto</button>
+                    </div>
+                    <div id="student-sequence-area" style="background: #fff; border: 2px solid #bdc3c7; border-radius: 8px; padding: 15px; display: flex; flex-direction: column; gap: 4px; min-height: 250px;">
+                        <p class="placeholder-text" id="student-placeholder">Clicca sui comandi per iniziare a scrivere.</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <button id="btn-play" class="btn-primary" style="flex: 1;">▶️ Avvia</button>
+                    <button id="btn-stop" style="flex: 1; background: #e74c3c; color: white;">⏹️ Ferma</button>
+                    <button id="btn-reset" style="flex: 1; background: #f39c12; color: white;">🔄 Ripristina</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="gioco.js"></script>
+</body>
+</html>
